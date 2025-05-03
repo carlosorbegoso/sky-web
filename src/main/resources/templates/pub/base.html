@@ -1,40 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> {#insert title} Sky Portal {/} </title>
+    <title id="page-title">{#insert title}Sky Portal{/}</title>
 
+    <!-- Estilo para prevenir FOUC -->
+    <style>
+        .content-loading {
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+    </style>
+
+        {#bundle /}
 </head>
 
 <body>
 <header>
     <div class="header-container">
-        <div class="logo"><a href="/">Sky Content</a></div>
+        <div class="logo"><a href="/" data-spa-link>Sky Content</a></div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/" data-spa-link>Home</a></li>
                 {#for category in categories}
-                    <li><a href="/category/{category.slug}">{category.name}</a></li>
+                    <li><a href="/category/{category.slug}" data-spa-link>{category.name}</a></li>
                 {/for}
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact" data-spa-link>Contact</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-{#insert content}
-    <p>Default content</p>
-{/insert}
+<main id="content-container">
+    {#insert content}
+        <p>Default content</p>
+    {/insert}
+</main>
 
 <footer>
     <div class="footer-container">
         <div class="footer-widget">
             <h4>About Us</h4>
             <ul>
-                <li><a href="/about">Our Story</a></li>
-                <li><a href="/team">Editorial Team</a></li>
+                <li><a href="/about" data-spa-link>Our Story</a></li>
+                <li><a href="/team" data-spa-link>Editorial Team</a></li>
             </ul>
         </div>
 
@@ -42,7 +52,7 @@
             <h4>Categories</h4>
             <ul>
                 {#for category in categories}
-                    <li><a href="/category/{category.slug}">{category.name}</a></li>
+                    <li><a href="/category/{category.slug}" data-spa-link>{category.name}</a></li>
                 {/for}
             </ul>
         </div>
@@ -50,8 +60,8 @@
         <div class="footer-widget">
             <h4>Useful Links</h4>
             <ul>
-                <li><a href="/privacy">Privacy Policy</a></li>
-                <li><a href="/terms">Terms and Conditions</a></li>
+                <li><a href="/privacy" data-spa-link>Privacy Policy</a></li>
+                <li><a href="/terms" data-spa-link>Terms and Conditions</a></li>
             </ul>
         </div>
     </div>
@@ -60,7 +70,6 @@
         <p>&copy; 2025 Sky Content. All rights reserved.</p>
     </div>
 </footer>
-
 
     {#bundle /}
 {#insert scripts /}
