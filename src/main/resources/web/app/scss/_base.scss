@@ -1,0 +1,110 @@
+// Reset styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $light-gray;
+  overflow-x: hidden;
+  transition: background-color $transition-fast, color $transition-fast;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  color: $secondary-color;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+// Links
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+// Image defaults
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Container class
+.container {
+  @include container;
+  display: flex;
+  gap: 30px;
+
+  @include tablet {
+    flex-direction: column;
+  }
+}
+
+// Skip link for accessibility
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  padding: 10px;
+  background-color: $primary-color;
+  color: $white;
+  z-index: $z-modal + 1;
+  transition: top $transition-fast;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+// Print styles
+@media print {
+  body {
+    background: none;
+    color: #000;
+  }
+
+  header, footer, .sidebar, .hero, .article-footer, .related-articles,
+  .ad-container, .horizontal-ad {
+    display: none;
+  }
+
+  .container {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .content-section {
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+
+    &:after {
+      content: " (" attr(href) ")";
+      font-size: 10pt;
+    }
+  }
+}

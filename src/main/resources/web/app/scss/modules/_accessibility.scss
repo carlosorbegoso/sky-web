@@ -1,0 +1,86 @@
+// Font size controls
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+
+  @include mobile {
+    margin: 5px;
+  }
+}
+
+// Font size classes
+.font-size-small {
+  font-size: 0.9rem;
+}
+
+.font-size-medium {
+  font-size: 1rem;
+}
+
+.font-size-large {
+  font-size: 1.2rem;
+}
+
+// High contrast mode
+.high-contrast {
+  --primary-color: #ffff00;
+  --secondary-color: #000;
+  --accent-color: #ff0;
+  --text-color: #fff;
+  --light-gray: #000;
+  --medium-gray: #000;
+  --dark-gray: #fff;
+  --white: #000;
+
+  background-color: #000;
+  color: #fff;
+
+  a,
+  .article-title,
+  h1, h2, h3 {
+    color: #ff0;
+  }
+
+  .cta-button,
+  .pagination-prev,
+  .pagination-next,
+  button {
+    background-color: #ff0;
+    color: #000;
+    border: 2px solid #fff;
+  }
+
+  img {
+    filter: grayscale(100%) contrast(120%);
+  }
+}
+
+// Contrast toggle
+.contrast-toggle {
+  background: none;
+  border: 2px solid $medium-gray;
+  color: $dark-gray;
+  width: 30px;
+  height: 30px;
+  border-radius: $border-radius-circle;
+  margin-left: 15px;
+  cursor: pointer;
+  @include flex-center;
+  font-weight: bold;
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+    border-color: $primary-color;
+  }
+
+  @include mobile {
+    margin: 5px;
+  }
+}
+
+// Improve text contrast
+.improve-contrast {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}

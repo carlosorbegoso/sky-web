@@ -1,0 +1,147 @@
+// Related articles grid
+.related-articles {
+  margin-top: 40px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+
+  @include tablet {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+.related-article {
+  @include card-shadow;
+  overflow: hidden;
+}
+
+.related-thumb {
+  height: 150px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-fast;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    height: 180px;
+  }
+}
+
+.related-article h4 {
+  padding: 15px 15px 5px;
+  font-size: 1rem;
+}
+
+.related-article .meta {
+  display: block;
+  padding: 0 15px 15px;
+  font-size: 0.8rem;
+  color: $dark-gray;
+}
+
+// Category banner card
+.category-banner {
+  background-color: $secondary-color;
+  color: $white;
+  padding: 40px 0;
+  margin-bottom: 30px;
+  width: 100%;
+
+  &-content {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+
+    @include mobile {
+      font-size: 2rem;
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+// Zoomable image card
+.zoomable-image {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+
+  .zoom-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: $border-radius-circle;
+    @include flex-center;
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+
+  &:hover .zoom-icon {
+    opacity: 1;
+  }
+}
+
+.zoom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  @include flex-center;
+  z-index: $z-overlay;
+}
+
+.zoom-container {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+
+  img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+}
+
+.close-zoom {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}

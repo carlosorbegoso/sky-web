@@ -1,0 +1,210 @@
+// Large tablets and desktops (992px and up)
+@media (max-width: $breakpoint-lg) {
+  :root {
+    --max-width: 960px;
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .footer-widget {
+    flex-basis: 31%;
+  }
+}
+
+// Medium tablets and small desktops (768px - 991px)
+@media (max-width: $breakpoint-md) {
+  :root {
+    --max-width: 720px;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .footer-widget {
+    flex-basis: 48%;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+// Small tablets and large smartphones (576px - 767px)
+@media (max-width: $breakpoint-sm) {
+  :root {
+    --max-width: 540px;
+    --header-height: auto;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0 10px 10px;
+  }
+
+  .hero-slide {
+    flex-direction: column;
+  }
+
+  .hero-content {
+    padding: 30px 20px;
+  }
+
+  .hero-image {
+    min-height: 200px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .article-content {
+    flex-direction: column;
+  }
+
+  .article-image {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .article-footer {
+    flex-direction: column;
+  }
+
+  .share-buttons, .tags {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .related-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .footer-widget {
+    flex-basis: 100%;
+  }
+
+  .category-banner h1 {
+    font-size: 2rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+// Extra small devices (575px and below)
+@media (max-width: $breakpoint-xs) {
+  :root {
+    --max-width: 100%;
+  }
+
+  html {
+    font-size: 13px;
+  }
+
+  .container, .horizontal-ad {
+    padding: 15px;
+  }
+
+  .hero-content {
+    padding: 20px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .article-title {
+    font-size: 1.3rem;
+  }
+
+  .full-article .article-title {
+    font-size: 1.8rem;
+  }
+
+  .article-body h2 {
+    font-size: 1.5rem;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .related-thumb {
+    height: 180px;
+  }
+
+  .pagination {
+    justify-content: center;
+  }
+
+  .category-banner h1 {
+    font-size: 1.8rem;
+  }
+
+  .ad-container.large {
+    height: 200px;
+    line-height: 200px;
+  }
+
+  .ad-container.small {
+    height: 100px;
+    line-height: 100px;
+  }
+
+  .horizontal-ad {
+    height: 80px;
+    line-height: 80px;
+  }
+}
+
+// High resolution devices
+@media (min-width: $breakpoint-xl) {
+  :root {
+    --max-width: 1320px;
+  }
+
+  html {
+    font-size: 17px;
+  }
+}

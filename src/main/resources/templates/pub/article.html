@@ -1,0 +1,167 @@
+{#include pub/base.html}
+    {#title}{article.title} - Sky{/title}
+
+    {#content}
+        <div class="container article-page">
+            <main class="content-section">
+                <article class="full-article">
+                    <div class="article-header">
+                        <h1 class="article-title">{article.title}</h1>
+                        <div class="article-meta">
+                            <span class="category-badge"><a href="/category/{article.category.slug}">{article.category.name}</a></span>
+                            <span class="publish-date">{article.formattedPublishedAt ?: '3 days ago'}</span>
+                            <span class="reading-time">{article.readingTimeMinutes} min read</span>
+                        </div>
+                    </div>
+
+                    <div class="featured-image">
+                        <img src="{article.imageUrl}" alt="{article.title}">
+                    </div>
+
+                    <div class="article-body">
+                        <p class="intro">{article.excerpt}</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel tincidunt nulla. Nulla facilisi. Proin ornare elementum eros, et fermentum erat rhoncus quis. Nulla facilisi. Vivamus auctor justo quis mauris faucibus, in tincidunt mi sodales.</p>
+
+                        <h2>Key Points</h2>
+
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                        <ul>
+                            <li>Duis aute irure dolor in reprehenderit</li>
+                            <li>Excepteur sint occaecat cupidatat non proident</li>
+                            <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
+                        </ul>
+
+                        <h2>In-Depth Analysis</h2>
+
+                        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.</p>
+
+                        <blockquote>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel tincidunt nulla. Nulla facilisi.</p>
+                            <cite>Industry Expert</cite>
+                        </blockquote>
+
+                        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+
+                        <h2>Conclusion</h2>
+
+                        <p>Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Nulla porttitor accumsan tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
+                    </div>
+
+                    <div class="article-footer">
+                        <div class="share-buttons">
+                            <span>Share this article:</span>
+                            <a href="#" class="share-button">Facebook</a>
+                            <a href="#" class="share-button">Twitter</a>
+                            <a href="#" class="share-button">LinkedIn</a>
+                        </div>
+
+                        <div class="tags">
+                            <span>Tags:</span>
+                            <a href="#" class="tag">{article.category.name}</a>
+                            <a href="#" class="tag">News</a>
+                            <a href="#" class="tag">Featured</a>
+                        </div>
+                    </div>
+                </article>
+
+                <section class="related-articles">
+                    <h3 class="section-title">Related Articles</h3>
+                    <div class="related-grid">
+                        {#for related in relatedArticles}
+                            <div class="related-article">
+                                <div class="related-thumb">
+                                    <a href="/article/{related.slug}">
+                                        <img src="{related.imageUrl}" alt="{related.title}">
+                                    </a>
+                                </div>
+                                <h4><a href="/article/{related.slug}">{related.title}</a></h4>
+                                <span class="meta">{related.formattedPublishedAt ?: '5 days ago'}</span>
+                            </div>
+                        {/for}
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <!-- Top Ad -->
+                {#if ads['sidebar-top']}
+                    <div class="ad-container large">
+                        {#if ads['sidebar-top'].htmlCode}
+                            {ads['sidebar-top'].htmlCode}
+                        {#else}
+                            <a href="{ads['sidebar-top'].linkUrl}" target="_blank">
+                                <img src="{ads['sidebar-top'].imageUrl}" alt="Advertisement">
+                            </a>
+                        {/if}
+                    </div>
+                {#else}
+                    <div class="ad-container large">
+                        ADVERTISING SPACE<br>300×250
+                    </div>
+                {/if}
+
+                <!-- Popular Articles -->
+                <div class="popular-posts">
+                    <h3>Popular Articles</h3>
+                    {#for popular in popularArticles}
+                        <div class="popular-post">
+                            <div class="popular-post-thumb">
+                                <img src="{popular.imageUrl}" alt="{popular.title}">
+                            </div>
+                            <div class="popular-post-info">
+                                <h4><a href="/article/{popular.slug}">{popular.title}</a></h4>
+                                <span class="popular-post-meta">{popular.formattedPublishedAt ?: '5 days ago'}</span>
+                            </div>
+                        </div>
+                    {/for}
+                </div>
+
+                <!-- Bottom Ad -->
+                {#if ads['sidebar-bottom']}
+                    <div class="ad-container small">
+                        {#if ads['sidebar-bottom'].htmlCode}
+                            {ads['sidebar-bottom'].htmlCode}
+                        {#else}
+                            <a href="{ads['sidebar-bottom'].linkUrl}" target="_blank">
+                                <img src="{ads['sidebar-bottom'].imageUrl}" alt="Advertisement">
+                            </a>
+                        {/if}
+                    </div>
+                {#else}
+                    <div class="ad-container small">
+                        ADVERTISING SPACE<br>300×120
+                    </div>
+                {/if}
+
+                <!-- Newsletter Signup -->
+                <div class="newsletter-signup">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Stay updated with our latest articles and news</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    {/content}
+
+    {#scripts}
+        <script>
+            // Article share functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const shareButtons = document.querySelectorAll('.share-button');
+
+                shareButtons.forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        // Placeholder for actual share functionality
+                        alert('Sharing feature will be implemented here!');
+                    });
+                });
+            });
+        </script>
+    {/scripts}
+{/include}

@@ -1,0 +1,91 @@
+// Card shadow mixin
+@mixin card-shadow {
+  background-color: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+}
+
+// Container mixin
+@mixin container {
+  max-width: $max-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+// Flex center mixin
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Button style mixin
+@mixin button-style($bg-color: $primary-color, $text-color: $white) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius-sm;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color $transition-fast;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+// Section title mixin
+@mixin section-title {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $medium-gray;
+  color: $secondary-color;
+}
+
+// Truncate text with ellipsis
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Media query mixins
+@mixin mobile {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+// Animation mixins
+@mixin fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@mixin slide-in-left {
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+@mixin slide-in-right {
+  animation: slideInRight 0.6s ease forwards;
+}

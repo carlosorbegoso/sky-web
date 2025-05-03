@@ -1,0 +1,104 @@
+// Fade In
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+// Slide In from left
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+// Slide In from right
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+// Scroll animations
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity $transition-slow, transform $transition-slow;
+
+  &.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-from-left {
+  transform: translateX(-50px);
+}
+
+.animate-from-right {
+  transform: translateX(50px);
+}
+
+.animate-from-bottom {
+  transform: translateY(50px);
+}
+
+// Pulse animation for CTA buttons
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+// Loading spinner
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: $border-radius-circle;
+  border-top-color: $primary-color;
+  animation: spin 1s ease-in-out infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Reveal element
+.reveal-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+// Typewriter effect
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 2px;
+  background-color: currentColor;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+// 3D card effect
+.card-3d-effect {
+  transition: transform $transition-medium;
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+  }
+}
+
+// Infinite scroll loader
+.infinite-scroll-loader {
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+}

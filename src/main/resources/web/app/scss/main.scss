@@ -1,0 +1,29 @@
+// Import variables and mixins first
+@import 'variables';
+@import 'mixins';
+
+// Base styles
+@import 'base';
+@import 'layout';
+
+// Components
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/articles';
+@import 'components/cards';
+@import 'components/pagination';
+@import 'components/sidebar';
+
+
+// Modules
+//@import 'modules/search';
+@import 'modules/bookmarks';
+@import 'modules/darkmode';
+@import 'modules/accessibility';
+@import 'modules/reading-goals';
+@import 'modules/animations';
+@import 'modules/user-stats';
+@import 'modules/filters';
+
+// Responsive styles (always last)
+@import 'responsive';

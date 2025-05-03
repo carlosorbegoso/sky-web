@@ -1,0 +1,114 @@
+{#include pub/base.html}
+    {#title}Sky - News Portal{/title}
+
+    {#content}
+        <div class="hero">
+            <div class="hero-slider">
+                {#for article in featuredArticles}
+                    <div class="hero-slide">
+                        <div class="hero-content">
+                            <h1>{article.title}</h1>
+                            <p>{article.excerpt}</p>
+                            <a href="/article/{article.slug}" class="cta-button">Read More</a>
+                        </div>
+                        <div class="hero-image" style="background-image: url('{article.imageUrl}');"></div>
+                    </div>
+                {/for}
+            </div>
+            <!-- Navigation arrows will be added by JavaScript -->
+        </div>
+
+        <div class="container">
+            <main class="content-section">
+                <h2 class="section-title">Recent Articles</h2>
+
+                {#for article in recentArticles}
+                    <article class="article">
+                        <div class="article-header">
+                            <a href="/article/{article.slug}" class="article-title">{article.title}</a>
+                            <span class="article-meta">{article.formattedPublishedAt ?: '3 days ago'} · {article.readingTimeMinutes} min read</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-image">
+                                <img src="{article.imageUrl}" alt="{article.title}">
+                            </div>
+                            <div class="article-excerpt">
+                                <p>{article.excerpt}</p>
+                                <a href="/article/{article.slug}" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </article>
+                {/for}
+            </main>
+
+            <aside class="sidebar">
+                <!-- Top Ad -->
+                {#if ads['sidebar-top']}
+                    <div class="ad-container large">
+                        {#if ads['sidebar-top'].htmlCode}
+                            {ads['sidebar-top'].htmlCode}
+                        {#else}
+                            <a href="{ads['sidebar-top'].linkUrl}" target="_blank">
+                                <img src="{ads['sidebar-top'].imageUrl}" alt="Advertisement">
+                            </a>
+                        {/if}
+                    </div>
+                {#else}
+                    <div class="ad-container large">
+                        ADVERTISING SPACE<br>300×250
+                    </div>
+                {/if}
+
+                <!-- Popular Articles -->
+                <div class="popular-posts">
+                    <h3>Popular Articles</h3>
+                    {#for article in popularArticles}
+                        <div class="popular-post">
+                            <div class="popular-post-thumb">
+                                <img src="{article.imageUrl}" alt="{article.title}">
+                            </div>
+                            <div class="popular-post-info">
+                                <h4><a href="/article/{article.slug}">{article.title}</a></h4>
+                                <span class="popular-post-meta">{article.formattedPublishedAt ?: '5 days ago'}</span>
+                            </div>
+                        </div>
+                    {/for}
+                </div>
+
+                <!-- Bottom Ad -->
+                {#if ads['sidebar-bottom']}
+                    <div class="ad-container small">
+                        {#if ads['sidebar-bottom'].htmlCode}
+                            {ads['sidebar-bottom'].htmlCode}
+                        {#else}
+                            <a href="{ads['sidebar-bottom'].linkUrl}" target="_blank">
+                                <img src="{ads['sidebar-bottom'].imageUrl}" alt="Advertisement">
+                            </a>
+                        {/if}
+                    </div>
+                {#else}
+                    <div class="ad-container small">
+                        ADVERTISING SPACE<br>300×120
+                    </div>
+                {/if}
+            </aside>
+        </div>
+
+        <!-- Horizontal Banner -->
+        {#if ads['banner']}
+            <div class="horizontal-ad">
+                {#if ads['banner'].htmlCode}
+                    {ads['banner'].htmlCode}
+                {#else}
+                    <a href="{ads['banner'].linkUrl}" target="_blank">
+                        <img src="{ads['banner'].imageUrl}" alt="Advertisement">
+                    </a>
+                {/if}
+            </div>
+        {#else}
+            <div class="horizontal-ad">
+                HORIZONTAL ADVERTISING SPACE<br>728×90
+            </div>
+        {/if}
+    {/content}
+{/include}

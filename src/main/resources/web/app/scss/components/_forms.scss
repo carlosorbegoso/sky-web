@@ -1,0 +1,84 @@
+// Form inputs
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+// Newsletter form
+.newsletter-signup {
+  @include card-shadow;
+  padding: 20px;
+  margin-top: 30px;
+
+  h3 {
+    margin-bottom: 10px;
+    color: $secondary-color;
+  }
+
+  p {
+    margin-bottom: 15px;
+    color: $dark-gray;
+    font-size: 0.9rem;
+  }
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 10px;
+    border: 1px solid $medium-gray;
+    border-radius: $border-radius-sm;
+    margin-bottom: 10px;
+  }
+}
+
+// Search form
+.search-form {
+  display: flex;
+  margin-bottom: 20px;
+
+  input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid $medium-gray;
+    border-radius: $border-radius-sm 0 0 $border-radius-sm;
+    border-right: none;
+  }
+
+  button {
+    padding: 0 15px;
+    background-color: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 0 $border-radius-sm $border-radius-sm 0;
+    cursor: pointer;
+  }
+}
+
+// Comment form
+.comment-form {
+  margin-top: 30px;
+
+  h3 {
+    margin-bottom: 15px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid $medium-gray;
+    border-radius: $border-radius-sm;
+    margin-bottom: 15px;
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  button {
+    @include button-style;
+  }
+}

@@ -1,0 +1,279 @@
+// Header
+header {
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  width: 100%;
+}
+
+.header-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+
+  @include mobile {
+    flex-direction: column;
+    padding: 15px 20px;
+    height: auto;
+  }
+}
+
+.logo {
+  a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  @include mobile {
+    margin-bottom: 15px;
+  }
+}
+
+nav {
+  ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    li {
+      margin-left: 20px;
+
+      @include mobile {
+        margin: 0 0 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      a {
+        color: $secondary-color;
+        font-weight: 500;
+
+        &:hover {
+          color: $primary-color;
+        }
+
+        @include mobile {
+          display: block;
+          padding: 8px 0;
+        }
+      }
+    }
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+// Menu toggle for mobile
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: $secondary-color;
+
+  @include mobile {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: $z-header + 1;
+  }
+}
+
+// Mobile menu classes
+.mobile-hidden {
+  @include mobile {
+    display: none;
+  }
+}
+
+.mobile-visible {
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white;
+    width: 100%;
+    padding: 10px 0;
+  }
+}
+
+// Hero section
+.hero {
+  background-color: $secondary-color;
+  color: $white;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  &-slider {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-slide {
+    display: flex;
+    min-height: 400px;
+    flex-direction: row;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+
+      @include mobile {
+        font-size: 1.8rem;
+      }
+    }
+
+    @include mobile {
+      padding: 30px 20px;
+    }
+  }
+
+  &-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+
+    @include mobile {
+      min-height: 200px;
+    }
+  }
+}
+
+// Main content areas
+.content-section {
+  flex: 2;
+}
+
+.sidebar {
+  flex: 1;
+
+  @include tablet {
+    width: 100%;
+  }
+}
+
+// Footer
+footer {
+  background-color: $footer-bg;
+  color: $white;
+  padding: 50px 0 20px;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.footer-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-widget {
+  flex-basis: 30%;
+  margin-bottom: 30px;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-bottom: 10px;
+
+      a {
+        color: #ecf0f1;
+        transition: color $transition-fast;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  @include tablet {
+    flex-basis: 48%;
+  }
+
+  @include mobile {
+    flex-basis: 100%;
+  }
+}
+
+.footer-copyright {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Ad containers
+.ad-container {
+  background-color: $medium-gray;
+  border-radius: $border-radius-lg;
+  margin-bottom: 30px;
+  text-align: center;
+  color: $dark-gray;
+  width: 100%;
+
+  &.large {
+    height: 250px;
+    line-height: 250px;
+  }
+
+  &.small {
+    height: 120px;
+    line-height: 120px;
+  }
+}
+
+.horizontal-ad {
+  max-width: $max-width;
+  margin: 0 auto 30px;
+  background-color: $medium-gray;
+  height: 90px;
+  line-height: 90px;
+  text-align: center;
+  border-radius: $border-radius-lg;
+  color: $dark-gray;
+  width: calc(100% - 40px);
+}

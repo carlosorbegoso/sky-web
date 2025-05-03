@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {#insert title} Sky Portal {/} </title>
+
+</head>
+
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo"><a href="/">Sky Content</a></div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {#for category in categories}
+                    <li><a href="/category/{category.slug}">{category.name}</a></li>
+                {/for}
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+{#insert content}
+    <p>Default content</p>
+{/insert}
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-widget">
+            <h4>About Us</h4>
+            <ul>
+                <li><a href="/about">Our Story</a></li>
+                <li><a href="/team">Editorial Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-widget">
+            <h4>Categories</h4>
+            <ul>
+                {#for category in categories}
+                    <li><a href="/category/{category.slug}">{category.name}</a></li>
+                {/for}
+            </ul>
+        </div>
+
+        <div class="footer-widget">
+            <h4>Useful Links</h4>
+            <ul>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms and Conditions</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-copyright">
+        <p>&copy; 2025 Sky Content. All rights reserved.</p>
+    </div>
+</footer>
+
+
+    {#bundle /}
+{#insert scripts /}
+</body>
+</html>

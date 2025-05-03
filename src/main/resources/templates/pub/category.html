@@ -1,0 +1,90 @@
+{#include pub/base.html}
+    {#title}{currentCategory.name} - Sky{/title}
+
+    {#content}
+        <div class="category-banner">
+            <div class="category-banner-content">
+                <h1>{currentCategory.name}</h1>
+                <p>{currentCategory.description}</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <main class="content-section">
+                <h2 class="section-title">Articles in {currentCategory.name}</h2>
+
+                {#for article in articles}
+                    <article class="article">
+                        <div class="article-header">
+                            <a href="/article/{article.slug}" class="article-title">{article.title}</a>
+                            <span class="article-meta">{article.formattedPublishedAt ?: '3 days ago'} · {article.readingTimeMinutes} min read</span>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-image">
+                                <img src="{article.imageUrl}" alt="{article.title}">
+                            </div>
+                            <div class="article-excerpt">
+                                <p>{article.excerpt}</p>
+                                <a href="/article/{article.slug}" class="read-more">Read more →</a>
+                            </div>
+                        </div>
+                    </article>
+                {/for}
+
+                <div class="pagination">
+                    <a href="#" class="pagination-prev disabled">← Previous</a>
+                    <span class="pagination-current">Page 1 of 1</span>
+                    <a href="#" class="pagination-next disabled">Next →</a>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <!-- Top Ad -->
+                {#if ads['sidebar-top']}
+                    <div class="ad-container large">
+                        {#if ads['sidebar-top'].htmlCode}
+                            {ads['sidebar-top'].htmlCode}
+                        {#else}
+                            <a href="{ads['sidebar-top'].linkUrl}" target="_blank">
+                                <img src="{ads['sidebar-top'].imageUrl}" alt="Advertisement">
+                            </a>
+                        {/if}
+                    </div>
+                {#else}
+                    <div class="ad-container large">
+                        ADVERTISING SPACE<br>300×250
+                    </div>
+                {/if}
+
+                <!-- Categories List -->
+                <div class="categories-widget">
+                    <h3>All Categories</h3>
+                    <ul class="categories-list">
+                        {#for category in categories}
+                            <li class="{category.slug == currentCategory.slug ? 'active' : ''}">
+                                <a href="/category/{category.slug}">{category.name}</a>
+                            </li>
+                        {/for}
+                    </ul>
+                </div>
+
+                <!-- Bottom Ad -->
+                {#if ads['sidebar-bottom']}
+                    <div class="ad-container small">
+                        {#if ads['sidebar-bottom'].htmlCode}
+                            {ads['sidebar-bottom'].htmlCode}
+                        {#else}
+                            <a href="{ads['sidebar-bottom'].linkUrl}" target="_blank">
+                                <img src="{ads['sidebar-bottom'].imageUrl}" alt="Advertisement">
+                            </a>
+                        {/if}
+                    </div>
+                {#else}
+                    <div class="ad-container small">
+                        ADVERTISING SPACE<br>300×120
+                    </div>
+                {/if}
+            </aside>
+        </div>
+    {/content}
+{/include}

@@ -1,0 +1,38 @@
+
+// Pagination controls
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include mobile {
+    justify-content: center;
+  }
+}
+
+.pagination-prev, .pagination-next {
+  padding: 8px 15px;
+  background-color: $primary-color;
+  color: $white;
+  border-radius: $border-radius-sm;
+  transition: background-color $transition-fast;
+  margin: 5px;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: $white;
+  }
+
+  &.disabled {
+    background-color: $medium-gray;
+    cursor: not-allowed;
+  }
+}
+
+.pagination-current {
+  color: $dark-gray;
+  font-size: 0.9rem;
+  margin: 5px;
+}
