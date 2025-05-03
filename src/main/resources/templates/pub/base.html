@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">{#insert title}Sky Portal{/}</title>
+    <title id="page-title">{#insert title}Sky Portal{/insert}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Sky Portal ofrece noticias y artículos de actualidad.">
+    <meta name="keywords" content="noticias, actualidad, Sky, portal">
+    <meta property="og:title" content="Sky Portal">
+    <meta property="og:description" content="Sky Portal ofrece noticias y artículos de actualidad.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.skyportal.com">
+    <meta property="og:image" content="/static/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
 
     <!-- Estilo para prevenir FOUC -->
     <style>
@@ -12,15 +24,16 @@
             transition: opacity 0.3s;
         }
     </style>
-
         {#bundle /}
 </head>
 
 <body>
-<header>
+<header role="banner">
     <div class="header-container">
-        <div class="logo"><a href="/" data-spa-link>Sky Content</a></div>
-        <nav>
+        <div class="logo">
+            <a href="/" data-spa-link>Sky Content</a>
+        </div>
+        <nav role="navigation" aria-label="Menú principal">
             <ul>
                 <li><a href="/" data-spa-link>Home</a></li>
                 {#for category in categories}
@@ -38,7 +51,7 @@
     {/insert}
 </main>
 
-<footer>
+<footer role="contentinfo">
     <div class="footer-container">
         <div class="footer-widget">
             <h4>About Us</h4>

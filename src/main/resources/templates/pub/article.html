@@ -8,7 +8,7 @@
                     <div class="article-header">
                         <h1 class="article-title">{article.title}</h1>
                         <div class="article-meta">
-                            <span class="category-badge"><a href="/category/{article.category.slug}">{article.category.name}</a></span>
+                            <span class="category-badge"><a href="/category/{article.category.slug}" data-spa-link>{article.category.name}</a></span>
                             <span class="publish-date">{article.formattedPublishedAt ?: '3 days ago'}</span>
                             <span class="reading-time">{article.readingTimeMinutes} min read</span>
                         </div>
@@ -72,11 +72,11 @@
                         {#for related in relatedArticles}
                             <div class="related-article">
                                 <div class="related-thumb">
-                                    <a href="/article/{related.slug}">
+                                    <a href="/article/{related.slug}" data-spa-link>
                                         <img src="{related.imageUrl}" alt="{related.title}">
                                     </a>
                                 </div>
-                                <h4><a href="/article/{related.slug}">{related.title}</a></h4>
+                                <h4><a href="/article/{related.slug}" data-spa-link>{related.title}</a></h4>
                                 <span class="meta">{related.formattedPublishedAt ?: '5 days ago'}</span>
                             </div>
                         {/for}
@@ -111,7 +111,7 @@
                                 <img src="{popular.imageUrl}" alt="{popular.title}">
                             </div>
                             <div class="popular-post-info">
-                                <h4><a href="/article/{popular.slug}">{popular.title}</a></h4>
+                                <h4><a href="/article/{popular.slug}" data-spa-link>{popular.title}</a></h4>
                                 <span class="popular-post-meta">{popular.formattedPublishedAt ?: '5 days ago'}</span>
                             </div>
                         </div>
@@ -150,18 +150,11 @@
 
     {#scripts}
         <script>
-            // Article share functionality
-            document.addEventListener('DOMContentLoaded', function() {
-                const shareButtons = document.querySelectorAll('.share-button');
-
-                shareButtons.forEach(button => {
-                    button.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        // Placeholder for actual share functionality
-                        alert('Sharing feature will be implemented here!');
-                    });
-                });
-            });
+            setTimeout(function() {
+                if (typeof window.setupShareButtons === 'function') {
+                    window.setupShareButtons();
+                }
+            }, 100);
         </script>
     {/scripts}
 {/include}
